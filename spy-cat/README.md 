@@ -1,0 +1,51 @@
+# Spy Cat Agency
+
+## Description
+A RESTful API to manage spy cats, their missions, and targets using the Echo framework and PostgreSQL database.
+
+## Features
+- Manage Spy Cats
+  - Create, read, update, and delete cats.
+  - Validate cat breed using TheCatAPI.
+- Manage Missions and Targets
+  - Create, read, update, and delete missions and targets.
+  - Assign missions to cats.
+  - Manage notes for targets.
+  - Ensure constraints like only one mission per cat at a time, target notes immutability after completion.
+
+## Setup
+
+### Prerequisites
+- Docker
+- Docker Compose
+
+### Running the application
+
+1. Clone the repository:
+
+```sh
+git clone https://github.com/danyazab/spy-cat.git
+cd spy-cat
+
+2. Build and run the containers:
+docker-compose up --build
+
+Endpoints
+Cats
+POST /cats - Create a new cat
+GET /cats/:id - Get a cat by ID
+PUT /cats/:id - Update a cat's salary
+DELETE /cats/:id - Remove a cat
+GET /cats - List all cats
+Missions
+POST /missions - Create a new mission with targets
+GET /missions/:id - Get a mission by ID
+PUT /missions/:id - Update mission completion status
+DELETE /missions/:id - Delete a mission (only if not assigned to a cat)
+GET /missions - List all missions
+PUT /missions/:id/assign - Assign a cat to a mission
+Targets
+POST /missions/:id/targets - Add a target to a mission
+PUT /missions/:missionId/targets/:targetId - Update a target
+DELETE /missions/:missionId/targets/:targetId - Delete a target (only if not completed)
+PUT /targets/:targetId/notes - Update notes for a target
